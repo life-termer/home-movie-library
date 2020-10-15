@@ -19,7 +19,6 @@ public class MovieDAOImpl implements MovieDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	@Transactional		// Automatically begin and end a transaction for Hibernate code
 	public List<Movie> getMovies() {
 		
 		// get the current hibernate session
