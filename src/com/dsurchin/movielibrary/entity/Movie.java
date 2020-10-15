@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class Movie {
 
 	// mapping to the fields of database tables
-	
 	@Id					// primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //let MySQL handle the generation AUTO_INCREMENT
 	@Column(name="id")	// mapping fields to database column

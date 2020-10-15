@@ -1,4 +1,4 @@
-package com.dsurchin.movielibrary.controller;
+package com.dsurchin.movielibrary.dao;
 
 import java.util.List;
 
