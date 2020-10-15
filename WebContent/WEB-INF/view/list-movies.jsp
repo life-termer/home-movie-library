@@ -1,5 +1,7 @@
 <!--add support for JSP Standard Tag Library (JSTL) Core tags--> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- add support for Spring MVC Form Tags -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -61,7 +63,7 @@
 					<c:param name="" value="${tempMovie.id }" />
 				</c:url>
 			
-				<tr>
+				<tr onclick="window.location.href='showMoviePage'">
 					<td> ${tempMovie.movTitle} </td>
 					<td> ${tempMovie.movYear} </td>
 					<td> ${tempMovie.movTime} </td>

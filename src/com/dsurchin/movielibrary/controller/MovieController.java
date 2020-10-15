@@ -54,5 +54,11 @@ public class MovieController {
 		
 		return("redirect:/movie/list");
 	}
+	
+	@GetMapping("/showMoviePage")
+	public String showMoviePage(Model model) {
+		
+		return "movie-page";
+	}
 
 }
