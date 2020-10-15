@@ -38,6 +38,12 @@ public class MovieDAOImpl implements MovieDAO {
 
 	@Override
 	public void saveMovie(Movie movie) {
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save the movie to the database
+		currentSession.save(movie);
 	}
 
 	@Override
