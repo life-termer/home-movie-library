@@ -8,7 +8,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Movie Library</title>
+
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" />
+
+<title>HML | Edit</title>
 	<link 	type="text/css"
 			rel="stylesheet"
 			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
@@ -44,7 +47,7 @@
 		<h1>Save Customer</h1>
 		
 		<!-- saveCustomer - send to Spring MVC mapping -->
-		<form:form action="saveMovie" modelAttribute="movie" method="POST">
+		<form:form action="saveMovie" modelAttribute="movie" method="POST" enctype="multipart/form-data">
 		
 		<!-- need to associate this data with customer id -->
 		<form:hidden path="id" />
@@ -53,7 +56,7 @@
 				<tbody>
 					<tr>
 						<td><label>Title:</label></td>
-						<td><form:input path="movTitle" /></td>
+						<td><form:input path="movTitle" name="name"/></td>
 					</tr>
 					<tr>
 						<td><label>Year:</label></td>
@@ -78,6 +81,12 @@
 					<tr>
 						<td><label>Description:</label></td>
 						<td><form:input path="movDedcr" /></td>
+					</tr>
+					<tr>
+						<td><label>Upload a poster:</label></td>
+						<td> 
+							<input type="file" class="file" name="file"/>
+    								
 					</tr>
 					<tr>
 						<td><label></label></td>

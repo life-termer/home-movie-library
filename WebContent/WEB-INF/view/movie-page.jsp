@@ -8,7 +8,10 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Home Movie Library</title>
+	
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" />
+	
+	<title>HML | ${movie.movTitle}</title>
 	
 	<!-- reference our style sheet -->
 	
@@ -44,7 +47,7 @@
 		<div class="w3-row w3-margin">
 		
 			<div class="w3-third">
-			  <img src="${pageContext.request.contextPath}/resources/img/snatch-poster.jpg" style="width:100%;min-height:200px">
+			  <img src="${pageContext.request.contextPath}/resources/img/${movie.id}.jpg" style="width:100%;min-height:200px">
 			</div>
 			<div class="w3-twothird w3-container">
 			  <h2>${movie.movTitle}</h2>

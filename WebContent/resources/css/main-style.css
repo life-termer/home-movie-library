@@ -66,6 +66,7 @@ div.content {
   content: "";
   display: table;
   clear: both;
+  height: 33%;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (1200px wide or less) */

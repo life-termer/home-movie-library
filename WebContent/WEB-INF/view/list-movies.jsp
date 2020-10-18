@@ -8,7 +8,10 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Home Movie Library</title>
+	
+	 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" />
+	
+	<title>HML | Home</title>
 
 	<!-- reference our style sheet -->
 	
@@ -73,10 +76,11 @@
     			</header>
     			
    		 			<div class="w3-container">
-      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movCountry}</h6>
-     		 				<hr>
-     		 			<img src="${pageContext.request.contextPath}/resources/img/snatch-poster.jpg" alt="" class="w3-left w3-round w3-margin-right" style="width:100px">
-      					<p>${tempMovie.movDedcr}</p><br>
+      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movDate}(${tempMovie.movCountry}</h6>
+     		 				
+     		 			<img src="${pageContext.request.contextPath}/resources/img/${tempMovie.id}.jpg" alt="" class="w3-left w3-round w3-margin-right"  style="width:100px">
+      					<p>${tempMovie.movDedcr}</p>
+      					<br>
     				</div>
     					<div class="w3-bar">
     						<a href="${moviePage}" class="w3-bar-item w3-button w3-hover-green w3-dark-grey" style="width:33.3%">More</a>
