@@ -1,19 +1,4 @@
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
 
-html {
-  font-size: 11px;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 1em;
-  line-height: 1.6;
-  background: #eee
-}
 
 .container {
   display: block;
@@ -46,7 +31,7 @@ body {
   box-shadow: 1px 0 10px 0 rgba(0, 0, 0, 0.2);
   &__img {
     height: 200px;
-    background: red;
+    background: url('http://cdn1-www.comingsoon.net/assets/uploads/gallery/angry-birds-1412173620/angrybirdsmovie0004.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;

@@ -10,4 +10,8 @@ public interface MovieService {
 	public List<Movie> getMovies();
 
 	public void saveMovie(Movie movie);
+
+	public Movie getMovie(int id);
+
+	public void deleteMovie(int id);
 }

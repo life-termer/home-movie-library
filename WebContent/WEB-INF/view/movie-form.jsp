@@ -1,3 +1,5 @@
+<!--add support for JSP Standard Tag Library (JSTL) Core tags--> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- add support for Spring MVC Form Tags -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -6,28 +8,37 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Save Customer</title>
-	
+<title>Add Movie</title>
 	<link 	type="text/css"
 			rel="stylesheet"
-			href="${pageContext.request.contextPath}/resources/css/style.css" >
+			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
 			
 	<link 	type="text/css"
 			rel="stylesheet"
-			href="${pageContext.request.contextPath}/resources/css/add-customer-style.css" >
+			href="${pageContext.request.contextPath}/resources/css/add-movie-style.css" >
 </head>
 <body>
-	<div id="wrapper">
-		<div id="header">
-			<h2> CRM - Customer Relationship Manager</h2>
-		</div>
+
+	<!-- construct an "add movie" link -->
+	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
+	
+	<div class="header">
+ 		 <h1>Add Movie</h1>
 	</div>
 	
-	<div id="container">
+	<div id="navbar">
+  		<a class = "active" href="${pageContext.request.contextPath}/movie/list">Home</a>
+  		<a href="${addMovieLink}">Add</a>
+  		<a href="#search">Search</a>
+	</div>
+	
+	<div class="content">
+	
+		<div id="container">
 	
 		<h3>Save Customer</h3>
 		
-		<!-- saveCustomer - send to Spting MVC mapping -->
+		<!-- saveCustomer - send to Spring MVC mapping -->
 		<form:form action="saveMovie" modelAttribute="movie" method="POST">
 		
 		<!-- need to associate this data with customer id -->
@@ -72,9 +83,7 @@
 			</table>
 		
 		</form:form>
-		<div style="clear; both;"></div>
-		
-		<p>
-			<a href="${pageContext.request.contextPath}/movie/list">Back to List</a>
+		</div>
+	</div>
 </body>
 </html>
