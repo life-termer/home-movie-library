@@ -8,20 +8,28 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Home Movie Library</title>
 	
 	<!-- reference our style sheet -->
 	
 	<link 	type="text/css"
 			rel="stylesheet"
 			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
+	<link 	type="text/css"
+			rel="stylesheet"
+			href = "${pageContext.request.contextPath}/resources/css/w3.css" />
+	<style>
+			html, body, h1, h2, h3, h4, h5, h6 {
+  			font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+	</style>
 </head>
 <body>
 	<!-- construct an "add movie" link -->
 	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
 	
 	<div class="header">
- 		 <h1>Header</h1>
+ 		 <h1>Home Movie Library</h1>
 	</div>
 	
 	<div id="navbar">
@@ -30,25 +38,43 @@
   		<a href="#search">Search</a>
 	</div>
 	
-	<div class="content">
-	<div class="row">
-  		<div class="column">
-    		<h2>Column</h2>
-   				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-  		</div>
-  
-  		<div class="column">
-   			 <h2>Column</h2>
-   				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-  		</div>
-  
-  		<div class="column">
-    		<h2>Column</h2>
-   			 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-  		</div>
-	</div>
-	</div>
 	
+	<div class="w3-content">
+
+		<div class="w3-row w3-margin">
+		
+			<div class="w3-third">
+			  <img src="${pageContext.request.contextPath}/resources/img/snatch-poster.jpg" style="width:100%;min-height:200px">
+			</div>
+			<div class="w3-twothird w3-container">
+			  <h2>${movie.movTitle}</h2>
+			  
+			  <h6>${movie.movYear} | ${movie.movTime} min | ${movie.movLang} | ${movie.movCountry}</h6>
+			  <p>${movie.movDedcr}</p>
+			</div>
+			
+			</div>
+			<div class="w3-row w3-margin">
+			
+			<div class="w3-twothird w3-container">
+			  <h2>Storyline</h2>
+			  <p>
+			  ${movie.movDedcr}
+			  </p>
+			</div>
+			
+			</div>
+			<div class="w3-row w3-margin">
+		
+			<div class="w3-twothird w3-container">
+			  <h2>Reviews</h2>
+			  <p>
+			  ...
+			  </p>
+			</div>
+		</div>
+		</div>
+
 	<div class="footer">
  		 <h3>Footer</h3>
 	</div>

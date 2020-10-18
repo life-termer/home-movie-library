@@ -18,6 +18,11 @@
 	<link 	type="text/css"
 			rel="stylesheet"
 			href = "${pageContext.request.contextPath}/resources/css/w3.css" />
+	<style>
+			html, body, h1, h2, h3, h4, h5, h6 {
+  			font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+</style>
 						
 </head>
 <body>
@@ -42,6 +47,11 @@
 			<!-- loop over and print our movies -->
 			<c:forEach var="tempMovie" items="${movies}">
 			
+				<!-- construct an "movie page" link with movie id -->
+				<c:url var="moviePage" value="/movie/moviePage">
+					<c:param name="movieId" value="${tempMovie.id }" />
+				</c:url>
+				
 				<!-- construct an "update" link with movie id -->
 				<c:url var="updateLink" value="/movie/showFormForUpdate">
 					<c:param name="movieId" value="${tempMovie.id }" />
@@ -58,27 +68,29 @@
  				 
  				<div class="w3-card-4" style="width:100%">
    				 <header class="w3-container w3-light-grey">
-      				<h3>${tempMovie.movTitle}</h3>
+   				 
+      				<h2>${tempMovie.movTitle}</h2>
     			</header>
     			
    		 			<div class="w3-container">
-      					<p>${tempMovie.movYear} ${tempMovie.movTime} min</p>
+      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movCountry}</h6>
      		 				<hr>
-     		 			<img src="${pageContext.request.contextPath}/resources/img/snatch-poster.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:100px">
+     		 			<img src="${pageContext.request.contextPath}/resources/img/snatch-poster.jpg" alt="" class="w3-left w3-round w3-margin-right" style="width:100px">
       					<p>${tempMovie.movDedcr}</p><br>
     				</div>
-    				
-    					<a href="${addMovieLink}" class="w3-button w3-hover-green w3-dark-grey" style="width:31%">More</a>
-    					<a href="${updateLink}" class="w3-button w3-dark-grey" style="width:31%">Edit</a> 
-    					<a href="${deleteLink}" onclick="if (!(confirm('Are you shure you want to delete this movie?'))) return false" 
-    							class="w3-button w3-dark-grey" style="width:31%">Delete</a>
+    					<div class="w3-bar">
+    						<a href="${moviePage}" class="w3-bar-item w3-button w3-hover-green w3-dark-grey" style="width:33.3%">More</a>
+    						<a href="${updateLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:33.3%">Edit</a> 
+    						<a href="${deleteLink}" onclick="if (!(confirm('Are you shure you want to delete this movie?'))) return false" 
+    							class="w3-bar-item w3-button w3-dark-grey" style="width:33.3%">Delete</a>
+    					</div>
  					 </div>
 				</div>				
   			</div> 
  			</c:forEach>
 		</div>
 		</div>
-	
+
 	<div class="footer">
  		 <h3>Footer</h3>
 	

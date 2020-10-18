@@ -8,14 +8,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Movie</title>
+<title>Home Movie Library</title>
 	<link 	type="text/css"
 			rel="stylesheet"
 			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
 			
 	<link 	type="text/css"
 			rel="stylesheet"
-			href="${pageContext.request.contextPath}/resources/css/add-movie-style.css" >
+			href = "${pageContext.request.contextPath}/resources/css/w3.css" />
+	<style>
+			html, body, h1, h2, h3, h4, h5, h6 {
+  			font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+	</style>
 </head>
 <body>
 
@@ -23,7 +28,7 @@
 	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
 	
 	<div class="header">
- 		 <h1>Add Movie</h1>
+ 		 <h1>Home Movie Library</h1>
 	</div>
 	
 	<div id="navbar">
@@ -36,7 +41,7 @@
 	
 		<div id="container">
 	
-		<h3>Save Customer</h3>
+		<h1>Save Customer</h1>
 		
 		<!-- saveCustomer - send to Spring MVC mapping -->
 		<form:form action="saveMovie" modelAttribute="movie" method="POST">

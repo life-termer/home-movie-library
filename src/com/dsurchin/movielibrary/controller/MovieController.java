@@ -57,7 +57,13 @@ public class MovieController {
 	}
 	
 	@GetMapping("/moviePage")
-	public String showMoviePage(Model model) {
+	public String showMoviePage(@RequestParam("movieId") int id,
+									Model model) {
+		// get the movie from the service
+		Movie movie = movieService.getMovie(id);
+		
+		// set movie as a model attribute to pre-populate the form
+		model.addAttribute("movie", movie);
 		
 		return "movie-page";
 	}
