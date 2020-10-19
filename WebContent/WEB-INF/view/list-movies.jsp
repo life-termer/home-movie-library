@@ -42,11 +42,17 @@
 	<div id="navbar">
   		<a class = "active" href="${pageContext.request.contextPath}/movie/list">Home</a>
   		<a href="${addMovieLink}">Add</a>
-  		<a href="#search">Search</a>
+  		<div class="search-container">
+    		<form action="">
+      			<input type="text" placeholder="Search.." name="search">
+      			<button type="submit">Submit</button>
+    		</form>
+  	</div>
+ 		
 	</div>
 		<div class="content">
-				
-		<div class="row">
+			<div class="row">		
+		
 			<!-- loop over and print our movies -->
 			<c:forEach var="tempMovie" items="${movies}">
 			
@@ -69,17 +75,18 @@
   		
   			<div class="w3-container w3-padding-16">
  				 
- 				<div class="w3-card-4" style="width:100%">
-   				 <header class="w3-container w3-light-grey">
-   				 
-      				<h2>${tempMovie.movTitle}</h2>
+ 				<div class="w3-card-4 w3-light-gray" style="width:100%">
+   				 <header class="w3-container">
+   				
+      				<h4>${tempMovie.movTitle}</h4>
     			</header>
     			
    		 			<div class="w3-container">
-      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movDate}(${tempMovie.movCountry}</h6>
+      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movDate}(${tempMovie.movCountry})</h6>
+      					<hr>
      		 				
      		 			<img src="${pageContext.request.contextPath}/resources/img/${tempMovie.id}.jpg" alt="" class="w3-left w3-round w3-margin-right"  style="width:100px">
-      					<p>${tempMovie.movDedcr}</p>
+      					<p class="w3-small">${tempMovie.movDedcr}</p>
       					<br>
     				</div>
     					<div class="w3-bar">
@@ -90,9 +97,10 @@
     					</div>
  					 </div>
 				</div>				
-  			</div> 
+  			</div>
+  			
  			</c:forEach>
-		</div>
+			</div> 
 		</div>
 
 	<div class="footer">

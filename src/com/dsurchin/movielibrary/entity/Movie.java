@@ -37,6 +37,9 @@ public class Movie {
 	
 	@Column(name="mov_descr")
 	private String movDedcr;
+	
+	@Column(name="mov_storyline")
+	private String movStory;
 
 	// define constructor
 	public Movie() {
@@ -107,6 +110,14 @@ public class Movie {
 		this.movDedcr = movDedcr;
 	}
 	
+	public String getMovStory() {
+		return movStory;
+	}
+
+	public void setMovStory(String movStory) {
+		this.movStory = movStory;
+	}
+
 	// define toString method
 	@Override
 	public String toString() {

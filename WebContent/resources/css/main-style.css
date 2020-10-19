@@ -1,6 +1,6 @@
 
 .header {
-  background-color: #F1F1F1;
+  background-color: #ddd;
   text-align: center;
   padding: 20px;
 }
@@ -33,12 +33,56 @@
   color: white;
 }
 
+/* Style the search box inside the navigation bar */
+#navbar .search-container {
+  float: right;
+}
+
+#navbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+#navbar .search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+#navbar .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  #navbar .search-container {
+    float: none;
+  }
+  #navbar a, #navbar input[type=text], #navbar .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  #navbar input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
 /* Page content*/
 div.content {
   margin-left: 200px;
   margin-right: 200px;
   padding: 1px 16px;
   height: auto;
+  background-color: #ddd;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -58,15 +102,18 @@ div.content {
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
+  height: 350px;
   width: 33.33%;
+  
 }
+
 
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
-  height: 33%;
+  
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (1200px wide or less) */
@@ -77,7 +124,7 @@ div.content {
 }
 
 .footer {
-  background-color: #F1F1F1;
+  background-color: #ddd;
   text-align: center;
   padding: 0px;
 }

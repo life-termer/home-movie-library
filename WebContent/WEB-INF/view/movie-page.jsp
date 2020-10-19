@@ -25,6 +25,7 @@
 			html, body, h1, h2, h3, h4, h5, h6 {
   			font-family: "Comic Sans MS", cursive, sans-serif;
 			}
+		
 	</style>
 </head>
 <body>
@@ -41,8 +42,8 @@
   		<a href="#search">Search</a>
 	</div>
 	
-	
-	<div class="w3-content">
+	<div class="content">
+	<div class="w3-content w3-light-gray">
 
 		<div class="w3-row w3-margin">
 		
@@ -52,7 +53,7 @@
 			<div class="w3-twothird w3-container">
 			  <h2>${movie.movTitle}</h2>
 			  
-			  <h6>${movie.movYear} | ${movie.movTime} min | ${movie.movLang} | ${movie.movCountry}</h6>
+			  <h6>${movie.movYear} | ${movie.movTime} min | ${movie.movLang} | ${movie.movDate}(${movie.movCountry})</h6>
 			  <p>${movie.movDedcr}</p>
 			</div>
 			
@@ -62,7 +63,7 @@
 			<div class="w3-twothird w3-container">
 			  <h2>Storyline</h2>
 			  <p>
-			  ${movie.movDedcr}
+			  ${movie.movStory}
 			  </p>
 			</div>
 			
@@ -77,9 +78,11 @@
 			</div>
 		</div>
 		</div>
-
+		</div>
+		
 	<div class="footer">
  		 <h3>Footer</h3>
+	
 	</div>
 	
 	<script>

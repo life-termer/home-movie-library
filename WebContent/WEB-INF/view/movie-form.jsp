@@ -83,6 +83,10 @@
 						<td><form:input path="movDedcr" /></td>
 					</tr>
 					<tr>
+						<td><label>Storyline:</label></td>
+						<td><form:input path="movStory" /></td>
+					</tr>
+					<tr>
 						<td><label>Upload a poster:</label></td>
 						<td> 
 							<input type="file" class="file" name="file"/>
