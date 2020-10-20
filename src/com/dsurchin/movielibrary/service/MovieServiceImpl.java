@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dsurchin.movielibrary.dao.MovieDAO;
+import com.dsurchin.movielibrary.entity.Genres;
 import com.dsurchin.movielibrary.entity.Movie;
+import com.dsurchin.movielibrary.entity.Review;
 
 @Service		//Service implementation
 public class MovieServiceImpl implements MovieService {
@@ -39,6 +41,17 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void deleteMovie(int id) {
 		movieDAO.deleteMovie(id);
+	}
+
+	@Transactional
+	@Override
+	public List<Genres> getGenres() {
+		return movieDAO.getGenres();
+	}
+
+	@Override
+	public List<Review> getReviews() {
+		return null;
 	}
 	
 	

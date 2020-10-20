@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dsurchin.movielibrary.entity.Genres;
 import com.dsurchin.movielibrary.entity.Movie;
+import com.dsurchin.movielibrary.entity.Review;
 
 @Repository				// DAO implementations
 public class MovieDAOImpl implements MovieDAO {
@@ -70,6 +72,32 @@ public class MovieDAOImpl implements MovieDAO {
 		query.setParameter("movieId", id);
 		
 		query.executeUpdate();
+	}
+
+
+	@Override
+	public List<Genres> getGenres() {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// create a query and sort by last name [ASC|DESC]
+		Query<Genres> query = 
+				currentSession.createQuery("from Genres order by gen_title", Genres.class);
+		
+		// execute query and get result list
+		List<Genres> genres = query.getResultList();
+		
+		
+		// return the result
+		
+		return genres;
+	}
+
+	@Override
+	public List<Review> getReviews() {
+
+		
+		return null;
 	}
 
 }

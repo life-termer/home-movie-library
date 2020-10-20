@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -24,15 +25,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.dsurchin.movielibrary.entity.Genres;
 import com.dsurchin.movielibrary.entity.Movie;
+import com.dsurchin.movielibrary.entity.Review;
 import com.dsurchin.movielibrary.service.MovieService;
 
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
-	
-	private static final String uploadDirectory ="d:\\"; 
-	
+		
 	// inject the movie Service
 	@Autowired
 	private MovieService movieService;
@@ -43,9 +44,11 @@ public class MovieController {
 		
 		// get movies from the Service
 		List<Movie> movies = movieService.getMovies();
+		List<Genres> genres = movieService.getGenres();
 		
 		// add the movies to the model
 		model.addAttribute("movies", movies);
+		model.addAttribute("genres", genres);
 		
 		return "list-movies";
 	}
@@ -56,7 +59,16 @@ public class MovieController {
 		// create model attribute to bind form data
 		Movie movie = new Movie();
 		
+		// get reviews from the Service
+		List<Genres> genres = movieService.getGenres();
+		List<String> gTitles = new ArrayList<>();
+		for(Genres gen : genres) {
+			gTitles.add(gen.getGenTitle());
+		}
+		
 		model.addAttribute("movie", movie);
+		model.addAttribute("genres", genres);
+		model.addAttribute("gTitles", gTitles);
 		
 		return "movie-form";
 	}
@@ -66,8 +78,14 @@ public class MovieController {
 				@RequestParam("file") CommonsMultipartFile file,  
 				HttpSession session) throws Exception {
 		
+		System.out.println("Movie");
+		System.out.println(movie.getGenres());
+		
 		// save the movie using our service
 		movieService.saveMovie(movie);
+		
+		System.out.println("Saved");
+		System.out.println(movie.getGenres());
 		
 		// Creating the directory to store poster image
 		//String rootPath = System.getProperty("catalina.home");
@@ -111,8 +129,16 @@ public class MovieController {
 		// get the movie from the service
 		Movie movie = movieService.getMovie(id);
 		
+		List<Genres> genres = movieService.getGenres();
+		List<String> gTitles = new ArrayList<>();
+		for(Genres gen : genres) {
+			gTitles.add(gen.getGenTitle());
+		}
+		
 		// set movie as a model attribute to pre-populate the form
 		model.addAttribute("movie", movie);
+		model.addAttribute("genres", genres);
+		model.addAttribute("gTitles", gTitles);
 		
 		// send over to our form
 		

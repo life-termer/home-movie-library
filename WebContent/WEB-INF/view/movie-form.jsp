@@ -18,7 +18,7 @@
 			
 	<link 	type="text/css"
 			rel="stylesheet"
-			href = "${pageContext.request.contextPath}/resources/css/w3.css" />
+			href = "https://www.w3schools.com/w3css/4/w3.css" />
 	<style>
 			html, body, h1, h2, h3, h4, h5, h6 {
   			font-family: "Comic Sans MS", cursive, sans-serif;
@@ -49,9 +49,8 @@
 		<!-- saveCustomer - send to Spring MVC mapping -->
 		<form:form action="saveMovie" modelAttribute="movie" method="POST" enctype="multipart/form-data">
 		
-		<!-- need to associate this data with customer id -->
+		<!-- need to associate this data with movie id -->
 		<form:hidden path="id" />
-		
 			<table>
 				<tbody>
 					<tr>
@@ -85,6 +84,13 @@
 					<tr>
 						<td><label>Storyline:</label></td>
 						<td><form:input path="movStory" /></td>
+					</tr>				<tr>
+						<td><label>Genres:</label></td>
+						<td>
+							<c:forEach var="tempGenre" items="${genres}">
+								<form:checkbox path="genres" value="${tempGenre }" /> ${tempGenre.genTitle}
+							</c:forEach>
+						</td>
 					</tr>
 					<tr>
 						<td><label>Upload a poster:</label></td>

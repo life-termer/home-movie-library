@@ -1,10 +1,18 @@
 package com.dsurchin.movielibrary.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity					// Java class that is mapped to a database table
@@ -40,6 +48,17 @@ public class Movie {
 	
 	@Column(name="mov_storyline")
 	private String movStory;
+	
+	// add many to many mapping
+	@ManyToMany(fetch=FetchType.LAZY,
+				cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+				CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(
+				name="movie_genres",
+				joinColumns=@JoinColumn(name="mov_id"),
+				inverseJoinColumns=@JoinColumn(name="gen_id")
+				)
+	private List<Genres> genres;
 
 	// define constructor
 	public Movie() {
@@ -118,12 +137,27 @@ public class Movie {
 		this.movStory = movStory;
 	}
 
+	public List<Genres> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genres> genres) {
+		this.genres = genres;
+	}
+
 	// define toString method
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", movTitle=" + movTitle + ", movYear=" + movYear + "]";
 	}
 	
+	// add a convenience method for genres
+	public void addGenres(Genres genre) {
+		if(genres == null) {
+			genres = new ArrayList<>();
+		}
+		genres.add(genre);
+	}
 	
 	
 }

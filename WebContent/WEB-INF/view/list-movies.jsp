@@ -20,7 +20,7 @@
 			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
 	<link 	type="text/css"
 			rel="stylesheet"
-			href = "${pageContext.request.contextPath}/resources/css/w3.css" />
+			href = "https://www.w3schools.com/w3css/4/w3.css" />
 	<style>
 			html, body, h1, h2, h3, h4, h5, h6 {
   			font-family: "Comic Sans MS", cursive, sans-serif;
@@ -105,7 +105,6 @@
 
 	<div class="footer">
  		 <h3>Footer</h3>
-	
 	</div>
 	<script>
 		window.onscroll = function() {myFunction()};
