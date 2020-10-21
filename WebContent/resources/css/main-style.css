@@ -77,9 +77,9 @@
   }
 }
 /* Page content*/
-div.content {
-  margin-left: 200px;
-  margin-right: 200px;
+.content {
+  margin-left: 20%;
+  margin-right: 20%;
   padding: 1px 16px;
   height: auto;
   background-color: #ddd;

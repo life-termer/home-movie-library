@@ -82,7 +82,7 @@
     			</header>
     			
    		 			<div class="w3-container">
-      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movDate}(${tempMovie.movCountry})</h6>
+      					<h6>${tempMovie.movYear} | ${tempMovie.movTime} min | ${tempMovie.movLang} | ${tempMovie.movDate} (${tempMovie.movCountry})</h6>
       					<hr>
      		 				
      		 			<img src="${pageContext.request.contextPath}/resources/img/${tempMovie.id}.jpg" alt="" class="w3-left w3-round w3-margin-right"  style="width:100px">
@@ -120,6 +120,5 @@
   		}
 	}
 	</script>
-</body>
 </body>
 </html>

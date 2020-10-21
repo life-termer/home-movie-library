@@ -1,6 +1,5 @@
 package com.dsurchin.movielibrary.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -42,6 +41,15 @@ public class Movie {
 	
 	@Column(name="mov_rel_country")
 	private String movCountry;
+	
+	@Column(name="mov_genre")
+	private String movGenre;
+	
+	@Column(name="mov_cast")
+	private String movCast;
+	
+	@Column(name="mov_director")
+	private String movDir;
 	
 	@Column(name="mov_descr")
 	private String movDedcr;
@@ -140,6 +148,31 @@ public class Movie {
 	public List<Genres> getGenres() {
 		return genres;
 	}
+	
+
+	public String getMovGenre() {
+		return movGenre;
+	}
+
+	public void setMovGenre(String movGenre) {
+		this.movGenre = movGenre;
+	}
+
+	public String getMovCast() {
+		return movCast;
+	}
+
+	public void setMovCast(String movCast) {
+		this.movCast = movCast;
+	}
+
+	public String getMovDir() {
+		return movDir;
+	}
+
+	public void setMovDir(String movDir) {
+		this.movDir = movDir;
+	}
 
 	public void setGenres(List<Genres> genres) {
 		this.genres = genres;
@@ -149,15 +182,6 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", movTitle=" + movTitle + ", movYear=" + movYear + "]";
-	}
-	
-	// add a convenience method for genres
-	public void addGenres(Genres genre) {
-		if(genres == null) {
-			genres = new ArrayList<>();
-		}
-		genres.add(genre);
-	}
-	
+	}	
 	
 }

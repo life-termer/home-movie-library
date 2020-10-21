@@ -32,6 +32,17 @@
 	<!-- construct an "add movie" link -->
 	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
 	
+	<!-- construct an "update" link with movie id -->
+	<c:url var="updateLink" value="/movie/showFormForUpdate">
+		<c:param name="movieId" value="${movie.id }" />
+	</c:url>
+	
+	<!-- construct an "delete" link with movie id -->
+	<c:url var="deleteLink" value="/movie/delete">
+		<c:param name="movieId" value="${moovie.id}" />
+	</c:url>
+	
+	
 	<div class="header">
  		 <h1>Home Movie Library</h1>
 	</div>
@@ -46,22 +57,28 @@
 	<div class="w3-content w3-light-gray">
 
 		<div class="w3-row w3-margin">
-		
+		<div class="">
+		 	<h3>${movie.movTitle} (${movie.movYear})</h3>
+			  
+			 <h6> ${movie.movTime} min | ${movie.movGenre} | ${movie.movLang} | 
+			 ${movie.movDate} (${movie.movCountry})</h6>
+		</div>
 			<div class="w3-third">
 			  <img src="${pageContext.request.contextPath}/resources/img/${movie.id}.jpg" style="width:100%;min-height:200px">
 			</div>
 			<div class="w3-twothird w3-container">
-			  <h2>${movie.movTitle}</h2>
+			 <p>${movie.movDedcr}</p>
+			  <p> <b>Director: </b> ${movie.movDir}
+			 <p> <b>Stars: </b> ${movie.movCast}
+			
 			  
-			  <h6>${movie.movYear} | ${movie.movTime} min | ${movie.movLang} | ${movie.movDate}(${movie.movCountry})</h6>
-			  <p>${movie.movDedcr}</p>
 			</div>
 			
 			</div>
 			<div class="w3-row w3-margin">
 			
 			<div class="w3-twothird w3-container">
-			  <h2>Storyline</h2>
+			  <h4>Storyline</h4>
 			  <p>
 			  ${movie.movStory}
 			  </p>
@@ -71,11 +88,16 @@
 			<div class="w3-row w3-margin">
 		
 			<div class="w3-twothird w3-container">
-			  <h2>Reviews</h2>
+			  <h4>Reviews</h4>
 			  <p>
 			  ...
 			  </p>
 			</div>
+		</div>
+		<div class="w3-bar">
+				<a href="${updateLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Edit</a> 
+				<a href="${deleteLink}" onclick="if (!(confirm('Are you shure you want to delete this movie?'))) return false" 
+					class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Delete</a>
 		</div>
 		</div>
 		</div>

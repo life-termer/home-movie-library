@@ -31,7 +31,7 @@
 	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
 	
 	<div class="header">
- 		 <h1>Home Movie Library</h1>
+ 		 <h2>Home Movie Library</h2>
 	</div>
 	
 	<div id="navbar">
@@ -41,73 +41,89 @@
 	</div>
 	
 	<div class="content">
+		<h3 class="w3-center">Add | Edit Movie</h3>
 	
-		<div id="container">
 	
-		<h1>Save Customer</h1>
-		
 		<!-- saveCustomer - send to Spring MVC mapping -->
 		<form:form action="saveMovie" modelAttribute="movie" method="POST" enctype="multipart/form-data">
 		
 		<!-- need to associate this data with movie id -->
 		<form:hidden path="id" />
-			<table>
-				<tbody>
-					<tr>
-						<td><label>Title:</label></td>
-						<td><form:input path="movTitle" name="name"/></td>
-					</tr>
-					<tr>
-						<td><label>Year:</label></td>
-						<td><form:input path="movYear" /></td>
-					</tr>
-					<tr>
-						<td><label>Time:</label></td>
-						<td><form:input path="movTime" /></td>
-					</tr>
-					<tr>
-						<td><label>Language:</label></td>
-						<td><form:input path="movLang" /></td>
-					</tr>
-					<tr>
-						<td><label>Release Date:</label></td>
-						<td><form:input path="movDate" /></td>
-					</tr>
-					<tr>
-						<td><label>Release Country:</label></td>
-						<td><form:input path="movCountry" /></td>
-					</tr>
-					<tr>
-						<td><label>Description:</label></td>
-						<td><form:input path="movDedcr" /></td>
-					</tr>
-					<tr>
-						<td><label>Storyline:</label></td>
-						<td><form:input path="movStory" /></td>
-					</tr>				<tr>
-						<td><label>Genres:</label></td>
-						<td>
-							<c:forEach var="tempGenre" items="${genres}">
-								<form:checkbox path="genres" value="${tempGenre }" /> ${tempGenre.genTitle}
-							</c:forEach>
-						</td>
-					</tr>
-					<tr>
-						<td><label>Upload a poster:</label></td>
-						<td> 
-							<input type="file" class="file" name="file"/>
-    								
-					</tr>
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
-					</tr>
-					
-				</tbody>
-			</table>
+		<div class="w3-content w3-light-gray">
 		
+			<table class="w3-table-all w3-hoverable">
+				<tr>
+					<td>Title:</td>
+					<td><form:input path="movTitle" name="name"/></td>
+				</tr>
+				<tr>
+					<td>Year:</td>
+					<td><form:input path="movYear" /></td>
+				</tr>
+				<tr>
+					<td>Time:</td>
+					<td><form:input path="movTime" /></td>
+				</tr>
+				<tr>
+					<td>Language:</td>
+					<td><form:input path="movLang" /></td>
+				</tr>
+				<tr>
+					<td>Release Date:</td>
+					<td><form:input path="movDate" /></td>
+				</tr>
+				<tr>
+					<td>Release Country:</td>
+					<td><form:input path="movCountry" /></td>
+				</tr>
+				<tr>
+					<td>Genre:</td>
+					<td><form:input path="movGenre" /></td>
+				</tr>
+				<tr>
+					<td>Director:</td>
+					<td><form:input path="movDir" /></td>
+				</tr>
+				<tr>
+					<td>Stars:</td>
+					<td><form:input path="movCast" /></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><form:textarea path="movDedcr"  rows="5" cols="30"/></td>
+				</tr>
+				<tr>
+					<td>Storyline:</td>
+					<td><form:textarea path="movStory" rows="5" cols="30"/></td>
+				</tr>
+				<tr>
+					<td>Upload a poster:</td>
+					<td><input type="file" class="file" name="file"/></td>
+				</tr> 
+				   
+    		</table>
+    		<input class="w3-button w3-block w3-teal" type="submit" value="Save" class="save" />
+
+			</div>						
 		</form:form>
-		</div>
+		
 	</div>
+		<div class="footer">
+ 		 <h3>Footer</h3>
+	</div>
+	<script>
+		window.onscroll = function() {myFunction()};
+
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
+
+		function myFunction() {
+  			if (window.pageYOffset >= sticky) {
+   			 navbar.classList.add("sticky")
+  		} else {
+   		 navbar.classList.remove("sticky");
+  		}
+	}
+	</script>
 </body>
 </html>
