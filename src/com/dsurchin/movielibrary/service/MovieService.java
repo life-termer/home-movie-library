@@ -17,7 +17,9 @@ public interface MovieService {
 
 	public void deleteMovie(int id);
 
-	public List<Review> getReviews();
+	public List<Review> getReviews(int id);
 
 	public List<Genres> getGenres();
+
+	public void saveReview(Review review);
 }

@@ -1,20 +1,10 @@
 package com.dsurchin.movielibrary.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,91 +13,61 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
-import com.dsurchin.movielibrary.entity.Genres;
 import com.dsurchin.movielibrary.entity.Movie;
 import com.dsurchin.movielibrary.entity.Review;
 import com.dsurchin.movielibrary.service.MovieService;
 
 @Controller
-@RequestMapping("/movie")
-public class MovieController {
+@RequestMapping("/review")
+public class ReviewController {
 		
 	// inject the movie Service
 	@Autowired
 	private MovieService movieService;
 	
-	// only handles GET method, any other HTTP REQUEST methods will be rejected
-	@GetMapping("/list")
-	public String listMovie (Model model) {
-		
-		// get movies from the Service
-		List<Movie> movies = movieService.getMovies();
-		
-		// add the movies to the model
-		model.addAttribute("movies", movies);
-		
-		return "list-movies";
-	}
+	private int movieId;
+	
+	
 	
 	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(Model model) {
+	public String showFormForAdd(@RequestParam("movieId") int id,
+								Model model) {
 		
 		// create model attribute to bind form data
-		Movie movie = new Movie();
+		Review review = new Review();
+		
+		// get the movie from the service
+		Movie movie = movieService.getMovie(id);
 		
 		
+		model.addAttribute("review", review);
 		model.addAttribute("movie", movie);
 		
-		return "movie-form";
+		movieId = id;
+		
+		return "review-form";
 	}
 	
-	@PostMapping("/saveMovie")
-	public String saveMovie(@ModelAttribute("movie") Movie movie,
-				@RequestParam("file") CommonsMultipartFile file,  
-				HttpSession session) throws Exception {
+	@PostMapping("/saveReview")
+	public String saveMovie(@ModelAttribute("review") Review review)  {
+		
+		// save the movie using our service
+		movieService.saveReview(review);
+		
+		// get the movie from the service
+		Movie movie = movieService.getMovie(movieId);
+		 
+		// add review to the movie
+		movie.addReviews(review);
 		
 		// save the movie using our service
 		movieService.saveMovie(movie);
 		
-		// Creating the directory to store poster image
-		//String rootPath = System.getProperty("catalina.home");
-		File dir = new File("C:\\Users\\Admin\\Documents\\GitHub\\home-movie-library\\WebContent\\resources\\img");      
-		String name = movie.getId() + ".jpg";
-		Path p = Paths.get(dir + File.separator + name);
-		
-		
-		
-		// Create the file on server
-		if(!Files.exists(p)) {
-		File serverFile = new File(dir + File.separator + name);	
-	    byte[] bytes = file.getBytes();  
-	    
-		BufferedOutputStream stream = new BufferedOutputStream(
-				new FileOutputStream(serverFile));  
-	    stream.write(bytes);  
-	    stream.flush();  
-	    stream.close();  
-		}
-	    
+		System.out.println(movie.getReviews());  
 		return("redirect:/movie/list");
 	}
 	
-	@GetMapping("/moviePage")
-	public String showMoviePage(@RequestParam("movieId") int id,
-									Model model) {
-		// get the movie from the service
-		Movie movie = movieService.getMovie(id);
-		
-		List<Review> reviews = movieService.getReviews(id);
-		
-		// set movie as a model attribute to pre-populate the form
-		model.addAttribute("movie", movie);
-		model.addAttribute("reviews", reviews);
-		
-		return "movie-page";
-	}
+
 	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("movieId") int id,
@@ -117,8 +77,10 @@ public class MovieController {
 		Movie movie = movieService.getMovie(id);
 		
 		
+		
 		// set movie as a model attribute to pre-populate the form
 		model.addAttribute("movie", movie);
+
 		
 		// send over to our form
 		
@@ -156,7 +118,8 @@ public class MovieController {
 		movieService.deleteMovie(id);
 		
 		return ("redirect:/movie/list");
-		
 	}
+	
+	
 
 }

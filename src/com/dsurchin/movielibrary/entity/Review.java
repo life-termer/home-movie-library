@@ -17,28 +17,25 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="genres")
+@Table(name="review")
 public class Review {
 
 	// define the fields and mapping it to the database 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="gen_id")
-	private int genId;
+	@Column(name="rev_id")
+	private int revId;
 	
-	@Column(name="get_title")
-	private String genTitle;
+	@Column(name="rev_name")
+	private String revName;
 	
-	// add many to many mapping
-	@ManyToMany(fetch=FetchType.LAZY,
-				cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-				CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinTable(
-				name="movie_genres",
-				joinColumns=@JoinColumn(name="gen_id"),
-				inverseJoinColumns=@JoinColumn(name="mov_id")
-				)
-	private List<Movie> movies;
+	@Column(name="rev_rating")
+	private int revRating;
+	
+	@Column(name="review")
+	private String review;
+	
+	
 	
 	// define constructor
 	public Review() {
@@ -46,38 +43,36 @@ public class Review {
 	}
 	
 	// define getters and setters
-	public int getGenId() {
-		return genId;
+	public int getRevId() {
+		return revId;
 	}
 
-	public void setGenId(int genId) {
-		this.genId = genId;
+	public void setRevId(int revId) {
+		this.revId = revId;
 	}
 
-	public String getGenTitle() {
-		return genTitle;
+	public String getRevName() {
+		return revName;
 	}
 
-	public void setGenTitle(String genTitle) {
-		this.genTitle = genTitle;
+	public void setRevName(String revName) {
+		this.revName = revName;
 	}
 
-	public List<Movie> getMovies() {
-		return movies;
+	public int getRevRating() {
+		return revRating;
 	}
 
-	public void setMovies(List<Movie> movies) {
-		this.movies = movies;
-	}
-	
-	// add a convenience method for movies
-	public void addMovies(Movie movie) {
-		if(movies == null) {
-			movies = new ArrayList<>();
-		}
-		movies.add(movie);
+	public void setRevRating(int revRating) {
+		this.revRating = revRating;
 	}
 
-	
-	
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}	
+
 }

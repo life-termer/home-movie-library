@@ -1,5 +1,6 @@
 package com.dsurchin.movielibrary.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity					// Java class that is mapped to a database table
 @Table(name="movie") 	// mapping to database table
@@ -67,6 +70,11 @@ public class Movie {
 				inverseJoinColumns=@JoinColumn(name="gen_id")
 				)
 	private List<Genres> genres;
+	
+	// add one to many mapping
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="mov_id")
+	private List<Review> reviews;
 
 	// define constructor
 	public Movie() {
@@ -178,10 +186,26 @@ public class Movie {
 		this.genres = genres;
 	}
 
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
 	// define toString method
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", movTitle=" + movTitle + ", movYear=" + movYear + "]";
 	}	
+	
+	// add a convenience method for reviews
+	public void addReviews(Review review) {
+		if(reviews == null) {
+			reviews = new ArrayList<>();
+		}
+		reviews.add(review);
+	}
 	
 }

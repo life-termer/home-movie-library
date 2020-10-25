@@ -39,9 +39,13 @@
 	
 	<!-- construct an "delete" link with movie id -->
 	<c:url var="deleteLink" value="/movie/delete">
-		<c:param name="movieId" value="${moovie.id}" />
+		<c:param name="movieId" value="${movie.id}" />
 	</c:url>
 	
+	<!-- construct an "add review" link with movie id -->
+	<c:url var="addReviewLink" value="/review/showFormForAdd">
+		<c:param name="movieId" value="${movie.id}" />
+	</c:url>
 	
 	<div class="header">
  		 <h1>Home Movie Library</h1>
@@ -50,7 +54,6 @@
 	<div id="navbar">
   		<a class = "active" href="${pageContext.request.contextPath}/movie/list">Home</a>
   		<a href="${addMovieLink}">Add</a>
-  		<a href="#search">Search</a>
 	</div>
 	
 	<div class="content">
@@ -89,10 +92,24 @@
 		
 			<div class="w3-twothird w3-container">
 			  <h4>Reviews</h4>
-			  <p>
-			  ...
-			  </p>
 			</div>
+			<div class="w3-third">
+			  <a href="${addReviewLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Add Review</a> 
+			</div>
+			</div>
+			<c:forEach var="tempReview" items="${reviews}">
+				<div class="w3-panel w3-border w3-light-grey w3-round-large">
+				
+				<strong>${tempReview.revName}</strong> - ${tempReview.revRating}
+				<p>${tempReview.review}
+				
+				<hr class="w3-black">
+				
+				
+				</div>
+			</c:forEach>
+			
+			
 		</div>
 		<div class="w3-bar">
 				<a href="${updateLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Edit</a> 
@@ -101,6 +118,7 @@
 		</div>
 		</div>
 		</div>
+		
 		
 	<div class="footer">
  		 <h3>Footer</h3>

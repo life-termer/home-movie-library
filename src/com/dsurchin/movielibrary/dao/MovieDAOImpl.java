@@ -94,10 +94,31 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 
 	@Override
-	public List<Review> getReviews() {
+	public List<Review> getReviews(int id) {
 
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
 		
-		return null;
+		// create a query and sort by last name [ASC|DESC]
+		Query<Review> query = 
+				currentSession.createQuery("from Review where mov_id=:movieId", Review.class);
+		query.setParameter("movieId", id);
+		
+		// execute query and get result list
+		List<Review> reviews = query.getResultList();
+		
+		
+		return reviews;
+	}
+
+	@Override
+	public void saveReview(Review review) {
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+				
+		// save the movie to the database
+		currentSession.saveOrUpdate(review);
 	}
 
 }

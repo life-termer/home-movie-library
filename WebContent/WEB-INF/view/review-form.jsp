@@ -11,7 +11,7 @@
 
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" />
 
-<title>HML | Edit</title>
+<title>HML | Review</title>
 	<link 	type="text/css"
 			rel="stylesheet"
 			href = "${pageContext.request.contextPath}/resources/css/main-style.css" />
@@ -30,6 +30,7 @@
 	<!-- construct an "add movie" link -->
 	<c:url var="addMovieLink" value="/movie/showFormForAdd"></c:url>
 	
+	
 	<div class="header">
  		 <h2>Home Movie Library</h2>
 	</div>
@@ -40,71 +41,39 @@
 	</div>
 	
 	<div class="content">
-		<h3 class="w3-center">Add | Edit Movie</h3>
+		<h3 class="w3-center">Add | Edit Review for ${movie.movTitle}</h3>
 	
 	
-		<!-- saveCustomer - send to Spring MVC mapping -->
-		<form:form action="saveMovie" modelAttribute="movie" method="POST" enctype="multipart/form-data">
-		
-		<!-- need to associate this data with movie id -->
-		<form:hidden path="id" />
+		<!-- saveReview - send to Spring MVC mapping -->
+		<form:form action="saveReview" modelAttribute="review" method="POST">
+			
+		<!-- need to associate this data with review id -->
+		<form:hidden path="revId" />
+	
 		<div class="w3-content w3-light-gray">
 		
 			<table class="w3-table-all w3-hoverable">
 				<tr>
-					<td>Title:</td>
-					<td><form:input path="movTitle" name="name"/></td>
+					<td>Name:</td>
+					<td><form:input path="revName" name="name"/></td>
 				</tr>
 				<tr>
-					<td>Year:</td>
-					<td><form:input path="movYear" /></td>
+					<td>Rating:</td>
+					<td><form:input path="revRating" /></td>
 				</tr>
 				<tr>
-					<td>Time:</td>
-					<td><form:input path="movTime" /></td>
-				</tr>
-				<tr>
-					<td>Language:</td>
-					<td><form:input path="movLang" /></td>
-				</tr>
-				<tr>
-					<td>Release Date:</td>
-					<td><form:input type="date" path="movDate" /></td>
-				</tr>
-				<tr>
-					<td>Release Country:</td>
-					<td><form:input path="movCountry" /></td>
-				</tr>
-				<tr>
-					<td>Genre:</td>
-					<td><form:input path="movGenre" /></td>
-				</tr>
-				<tr>
-					<td>Director:</td>
-					<td><form:input path="movDir" /></td>
-				</tr>
-				<tr>
-					<td>Stars:</td>
-					<td><form:input path="movCast" /></td>
-				</tr>
-				<tr>
-					<td>Description:</td>
-					<td><form:textarea path="movDedcr"  rows="5" cols="30"/></td>
-				</tr>
-				<tr>
-					<td>Storyline:</td>
-					<td><form:textarea path="movStory" rows="5" cols="30"/></td>
-				</tr>
-				<tr>
-					<td>Upload a poster:</td>
-					<td><input type="file" class="file" name="file"/></td>
-				</tr> 
+					<td>Review:</td>
+					<td><form:textarea path="review"  rows="8" cols="30"/></td>
+				</tr>			
 				   
     		</table>
+    		
     		<input class="w3-button w3-block w3-teal" type="submit" value="Save" class="save" />
-
+    		
+				
 			</div>						
 		</form:form>
+		
 		
 	</div>
 		<div class="footer">

@@ -49,9 +49,16 @@ public class MovieServiceImpl implements MovieService {
 		return movieDAO.getGenres();
 	}
 
+	@Transactional
 	@Override
-	public List<Review> getReviews() {
-		return null;
+	public List<Review> getReviews(int id) {
+		return movieDAO.getReviews(id);
+	}
+
+	@Transactional
+	@Override
+	public void saveReview(Review review) {
+		movieDAO.saveReview(review);
 	}
 	
 	
