@@ -121,4 +121,18 @@ public class MovieDAOImpl implements MovieDAO {
 		currentSession.saveOrUpdate(review);
 	}
 
+	@Override
+	public void deleteReview(int id) {
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete movie from database using the primary key
+		Query query = currentSession.createQuery("delete from Review where id=:reviewId");
+		
+		query.setParameter("reviewId", id);
+		
+		query.executeUpdate();
+	}
+
 }

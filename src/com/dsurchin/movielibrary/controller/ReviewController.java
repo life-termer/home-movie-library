@@ -88,34 +88,11 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteMovie(@RequestParam("movieId") int id) {
+	public String deleteMovie(@RequestParam("reviewId") int id) {
 		
-		
-		// delete poster form disk
-		String poster =	"C:\\Users\\Admin\\Documents\\GitHub\\home-movie-library\\WebContent\\resources\\img\\" + id + ".jpg";
-		
-		try
-        { 
-            Files.deleteIfExists(Paths.get(poster)); 
-        } 
-        catch(NoSuchFileException e) 
-        { 
-            System.out.println("No such file/directory exists"); 
-        } 
-        catch(DirectoryNotEmptyException e) 
-        { 
-            System.out.println("Directory is not empty."); 
-        } 
-        catch(IOException e) 
-        { 
-            System.out.println("Invalid permissions."); 
-        } 
-          
-        System.out.println("Deletion successful."); 
-     
 		
 		// delete movie
-		movieService.deleteMovie(id);
+		movieService.deleteReview(id);
 		
 		return ("redirect:/movie/list");
 	}

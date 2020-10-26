@@ -38,6 +38,8 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
+	private int movieId;
+	
 	// only handles GET method, any other HTTP REQUEST methods will be rejected
 	@GetMapping("/list")
 	public String listMovie (Model model) {
@@ -57,8 +59,10 @@ public class MovieController {
 		// create model attribute to bind form data
 		Movie movie = new Movie();
 		
+		System.out.println("Show form" + movie.getReviews());
 		
 		model.addAttribute("movie", movie);
+	
 		
 		return "movie-form";
 	}
@@ -68,16 +72,26 @@ public class MovieController {
 				@RequestParam("file") CommonsMultipartFile file,  
 				HttpSession session) throws Exception {
 		
+		// get the reviews from the service		
+		List<Review> reviews = movieService.getReviews(movieId);
+		
+		// add review to the movie
+		for(Review review : reviews) {
+			movie.addReviews(review);
+		}
+		
+		System.out.println("Before saving"  + movie.getReviews());
+		
 		// save the movie using our service
 		movieService.saveMovie(movie);
+		
+		System.out.println("After saving"  + movie.getReviews());
 		
 		// Creating the directory to store poster image
 		//String rootPath = System.getProperty("catalina.home");
 		File dir = new File("C:\\Users\\Admin\\Documents\\GitHub\\home-movie-library\\WebContent\\resources\\img");      
 		String name = movie.getId() + ".jpg";
 		Path p = Paths.get(dir + File.separator + name);
-		
-		
 		
 		// Create the file on server
 		if(!Files.exists(p)) {
@@ -113,15 +127,18 @@ public class MovieController {
 	public String showFormForUpdate(@RequestParam("movieId") int id,
 									Model model) {
 		
+		movieId = id;
+		
 		// get the movie from the service
 		Movie movie = movieService.getMovie(id);
 		
+		System.out.println("Form for update");
+		System.out.println(movie.getReviews());
 		
 		// set movie as a model attribute to pre-populate the form
 		model.addAttribute("movie", movie);
 		
 		// send over to our form
-		
 		return "movie-form";
 	}
 	
@@ -149,7 +166,7 @@ public class MovieController {
             System.out.println("Invalid permissions."); 
         } 
           
-        System.out.println("Deletion successful."); 
+        System.out.println("Poster deleted."); 
      
 		
 		// delete movie

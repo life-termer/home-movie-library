@@ -47,6 +47,11 @@
 		<c:param name="movieId" value="${movie.id}" />
 	</c:url>
 	
+	<!-- construct an "update review" link with review id -->
+	<c:url var="updateReviewLink" value="/review/showFormForUpdate">
+		<c:param name="reviewId" value="${review.revId}" />
+	</c:url>
+	
 	<div class="header">
  		 <h1>Home Movie Library</h1>
 	</div>
@@ -98,12 +103,19 @@
 			</div>
 			</div>
 			<c:forEach var="tempReview" items="${reviews}">
-				<div class="w3-panel w3-border w3-light-grey w3-round-large">
+			
+				<!-- construct an "delete review" link with review id -->
+				<c:url var="deleteReviewLink" value="/review/delete">
+				<c:param name="reviewId" value="${tempReview.revId}" />
+				</c:url>
+				
+				<div class="w3-panel w3-border w3-light-grey w3-round-large w3-margin">
 				
 				<strong>${tempReview.revName}</strong> - ${tempReview.revRating}
 				<p>${tempReview.review}
 				
-				<hr class="w3-black">
+				<a href="${deleteReviewLink}" onclick="if (!(confirm('Are you shure you want to delete this rewiew?'))) return false" 
+				class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Delete review</a>
 				
 				
 				</div>

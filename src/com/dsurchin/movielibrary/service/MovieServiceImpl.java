@@ -60,6 +60,12 @@ public class MovieServiceImpl implements MovieService {
 	public void saveReview(Review review) {
 		movieDAO.saveReview(review);
 	}
+
+	@Transactional
+	@Override
+	public void deleteReview(int id) {
+		movieDAO.deleteReview(id);
+	}
 	
 	
 

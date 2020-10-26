@@ -23,4 +23,6 @@ public interface MovieDAO {
 		public List<Genres> getGenres();
 
 		public void saveReview(Review review);
+
+		public void deleteReview(int id);
 }
