@@ -2,7 +2,7 @@
 
 Home Movie Library - CRUD web application with Java MVC and Hibernate that connects to a database.  *(in progress)*
 
-Right now application allow user to:
+Right now application allows user to:
 *	Add new movies
 *	View movie pages
 *	Update/ delete movies
