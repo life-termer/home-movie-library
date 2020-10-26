@@ -93,7 +93,7 @@
     						<a href="${moviePage}" class="w3-bar-item w3-button w3-hover-green w3-dark-grey" style="width:33.3%">More</a>
     						<a href="${updateLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:33.3%">Edit</a> 
     						<a href="${deleteLink}" onclick="if (!(confirm('Are you shure you want to delete this movie?'))) return false" 
-    							class="w3-bar-item w3-button w3-dark-grey" style="width:33.3%">Delete</a>
+    							class="w3-bar-item w3-button w3-dark-grey w3-hover-red" style="width:33.3%">Delete</a>
     					</div>
  					 </div>
 				</div>				

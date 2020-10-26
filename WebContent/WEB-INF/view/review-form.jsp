@@ -59,7 +59,11 @@
 				</tr>
 				<tr>
 					<td>Rating:</td>
-					<td><form:input path="revRating" /></td>
+					<td>
+						<c:forEach var = "i" begin = "1" end = "10">
+						${i} <form:radiobutton path="revRating" value="${i}" />
+						</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<td>Review:</td>
