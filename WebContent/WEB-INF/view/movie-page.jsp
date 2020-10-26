@@ -61,8 +61,14 @@
 
 		<div class="w3-row w3-margin">
 		<div class="">
+		<div class="w3-row">
+			<div class="w3-col" style="width:90%">
 		 	<h3>${movie.movTitle} (${movie.movYear})</h3>
-			  
+			 </div> 
+			 <div class="w3-col" style="width:10%">
+			 <h4></h4>
+			 </div>
+		</div>	 
 			 <h6> ${movie.movTime} min | ${movie.movGenre} | ${movie.movLang} | 
 			 ${movie.movDate} (${movie.movCountry})</h6>
 		</div>
@@ -110,8 +116,16 @@
 					</c:url>
 				
 				<div class="w3-panel w3-border w3-light-grey w3-round-large w3-margin">
+				<div class="w3-row">
 				
-				<strong>${tempReview.revName}</strong> - ${tempReview.revRating}
+				<div class="w3-col" style="width:90%">
+				<strong>${tempReview.revName}</strong>
+				</div>
+				<div class="w3-col" style="width:10%">
+				<strong>${tempReview.revRating}</strong>
+				 </div>
+				 </div>
+				 
 				<p>${tempReview.review}
 				<div class="w3-bar">
 				<a href="${updateReviewLink}" class="w3-bar-item w3-button w3-dark-grey" style="width:50%">Edit Review</a>

@@ -60,6 +60,8 @@ public class Movie {
 	@Column(name="mov_storyline")
 	private String movStory;
 	
+	
+	
 	// add many to many mapping
 	@ManyToMany(fetch=FetchType.LAZY,
 				cascade = {CascadeType.PERSIST, CascadeType.MERGE,

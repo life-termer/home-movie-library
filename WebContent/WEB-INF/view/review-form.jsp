@@ -61,7 +61,7 @@
 					<td>Rating:</td>
 					<td>
 						<c:forEach var = "i" begin = "1" end = "10">
-						${i} <form:radiobutton path="revRating" value="${i}" />
+						<form:radiobutton path="revRating" value="${i}" /> ${i}  
 						</c:forEach>
 					</td>
 				</tr>

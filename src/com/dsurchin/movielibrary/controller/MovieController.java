@@ -56,6 +56,8 @@ public class MovieController {
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model model) {
 		
+		movieId = 0;
+		
 		// create model attribute to bind form data
 		Movie movie = new Movie();
 		
@@ -72,12 +74,15 @@ public class MovieController {
 				@RequestParam("file") CommonsMultipartFile file,  
 				HttpSession session) throws Exception {
 		
-		// get the reviews from the service		
-		List<Review> reviews = movieService.getReviews(movieId);
 		
-		// add review to the movie
-		for(Review review : reviews) {
-			movie.addReviews(review);
+		if(movieId!=0) {
+			// get the reviews from the service	
+			List<Review> reviews = movieService.getReviews(movieId);
+			
+			// add review to the movie
+			for(Review review : reviews) {
+				movie.addReviews(review);
+			}
 		}
 		
 		System.out.println("Before saving"  + movie.getReviews());
