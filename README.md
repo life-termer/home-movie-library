@@ -8,3 +8,7 @@ Right now application allow user to:
 *	Update/ delete movies
 *	Add reviews
 *	Delete reviews
+
+![Image](docs/img01.png) 
+
+![Image](docs/img02.png) 
